@@ -11,6 +11,7 @@
     box-sizing: border-box;
     border-radius: 30px;
     font-size: 20px;
+    font-family: 'Dosis', sans-serif;
 }
 
 .suggestion {
@@ -34,4 +35,18 @@
     font-size: 20px;
     font-family: 'Dosis', sans-serif;
     margin-top: 20px;
+}
+
+select {
+    width: 140px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 30px;
+    font-size: 20px;
+    font-family: 'Dosis', sans-serif;
+}
+
+.column {
+    display: flex;
+    flex-direction: row;
 }

@@ -1,10 +1,10 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import landJson from "./jsons/land_spawns.json";
-import surfJson from "./jsons/surf_spawns.json";
-import pokedexJson from "./jsons/pokedex.json";
-import parseSpawnJson from "./parseSpawnJson";
-import './Pokemon.css'
+import landJson from "../jsons/land_spawns.json";
+import surfJson from "../jsons/surf_spawns.json";
+import pokedexJson from "../jsons/pokedex.json";
+import parseSpawnJson from "../parseSpawnJson";
+import '../styles/Pokemon.css'
 
 function Pokemon(props) {
     const rarities = {
@@ -84,6 +84,7 @@ function Pokemon(props) {
                                             <p>Spawn Times: {translateSpawnTimes(spawn.times)}</p>
                                             <p>Rarity: {spawn.tier} ({rarities[spawn.tier]})</p>
                                             {spawn.item ? <p>Item: {spawn.item}</p> : <></>}
+                                            {spawn.memberOnly ? <p style={{color:"#472c4c", fontWeight:"bold"}}>Membership Only</p> : <></>}
                                         </div>
                                         <div className='row'>
                                             <p>Levels: {spawn.minLevel}-{spawn.maxLevel}</p>
