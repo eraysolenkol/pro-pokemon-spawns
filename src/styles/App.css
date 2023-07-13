@@ -50,3 +50,21 @@ select {
     display: flex;
     flex-direction: row;
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 600px) {
+    .container2 {
+        flex-direction: column;
+    }
+    #search {
+        width: 300px;
+    }
+
+
+    .column {
+        flex-direction: column;
+    }
+
+
+}

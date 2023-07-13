@@ -64,3 +64,11 @@ body {
 .spawn:hover {
     transform: scale(1.1);
 }
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+    .spawn {
+        width: 300px;
+        border-radius: 20px;
+    }
+}

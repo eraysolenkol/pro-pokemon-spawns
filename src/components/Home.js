@@ -220,7 +220,7 @@ function Home() {
                 </form>
             </div>
             {selectReturnItems.length === 0 || returnTotal() === selectReturnItems.length ? 
-            <div style={{marginTop:'20px' }}><img alt="img" style={imageStyle} src={process.env.PUBLIC_URL + '/' + image}/></div> : <></>}
+            <div style={{marginTop:'20px' }}><img alt="img" style={imageStyle} className="select-img" src={process.env.PUBLIC_URL + '/' + image}/></div> : <></>}
         </div>
     );
 }

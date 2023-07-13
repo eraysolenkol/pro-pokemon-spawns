@@ -44,6 +44,7 @@ function Item(props) {
     const params = useParams();
     const navigate = useNavigate();
     const [pokemons, setPokemons] = useState(getPokemons());
+    const [sortedSpawns, setSortedSpawns] = useState({});
     const [spawns, setSpawns] = useState([]);
     useEffect(() => {
         let matches = [];
@@ -57,6 +58,12 @@ function Item(props) {
         setSpawns(matches);
     }, []);
 
+    useEffect(() => {
+        spawns?.sort((a, b) => rarities[a.spawn.tier] - rarities[b.spawn.tier]);
+        console.log(spawns);
+        setSortedSpawns(spawns);
+    }, [spawns, rarities]);
+
     const renderItem = () => {
         if (spawns.length > 0) {
             return (
@@ -66,7 +73,7 @@ function Item(props) {
                         <p>{params.itemName.replace("-"," ").toUpperCase()}</p>
                         <img alt="item" width="200px" height="200px" srcSet={`https://img.pokemondb.net/sprites/items/${params.itemName.toLowerCase()}.png`} />
                         <div className='spawnsContainer'>
-                            {spawns.map((spawn) => {
+                            {sortedSpawns.map((spawn) => {
                                 return (
                                     <div className={`spawn ${spawn.spawn.land ? "green" : "blue"}`}>
                                         <div className='row'>

@@ -56,6 +56,8 @@ function Pokemon(props) {
     const navigate = useNavigate();
     const [pokemon, setPokemon] = useState({});
     const [isID, setIsID] = useState(false);
+    const [sortedSpawns, setSortedSpawns] = useState({});
+    
     useEffect(() => {
         let combinedJson = landJson.concat(surfJson);
         let pokemons = parseSpawnJson(combinedJson);
@@ -66,17 +68,23 @@ function Pokemon(props) {
         setPokemon(pokemons.find((pokemon) => pokemon.name.toLowerCase() === params.pokemonName.toLowerCase() || parseInt(pokemon.pokedexID) === parseInt(params.pokemonName)));
     }, []);
 
+    useEffect(() => {
+        pokemon?.spawns?.sort((a, b) => rarities[a.tier] - rarities[b.tier]);
+        setSortedSpawns(pokemon);
+    }, [pokemon, rarities]);
+
+
     const renderPokemon = () => {
         if (pokemon) {
             return (
                 <>
                     <input className='goBack' type='button' value='GO BACK' onClick={() => { navigate(-1) }} />
                     <div className='container'>
-                        <p>{pokemon?.name?.toUpperCase()}</p>
+                        <p>{sortedSpawns?.name?.toUpperCase()}</p>
                         <img alt='img' height={'275px'} width={'275px'} srcSet={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.pokedexID}.png`} />
-                        <p style={{ fontSize: "22px" }}>ID: {pokemon.pokedexID}</p>
+                        <p style={{ fontSize: "22px" }}>ID: {sortedSpawns.pokedexID}</p>
                         <div className='spawnsContainer'>
-                            {pokemon?.spawns?.map((spawn) => {
+                            {sortedSpawns?.spawns?.map((spawn) => {
                                 return (
                                     <div className={`spawn ${spawn.land ? "green" : "blue"}`}>
                                         <div className='row'>

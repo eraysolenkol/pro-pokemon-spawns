@@ -1,0 +1,8 @@
+/* Media Queries */
+
+@media screen and (max-width: 600px) {
+.poke-img {
+    width: 100px;
+    height: 100px;
+}
+}

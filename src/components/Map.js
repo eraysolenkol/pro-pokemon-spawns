@@ -70,7 +70,7 @@ function Map(props) {
                                 return (
                                     <div className={`spawn ${spawn.spawn.land ? "green" : "blue"}`}>
                                         <div className='row'>
-                                            <img alt='img' height={'275px'} width={'275px'} srcSet={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${spawn.id}.png`} />
+                                            <img alt='img' height={'275px'} width={'275px'} className='poke-img' srcSet={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${spawn.id}.png`} />
                                         </div>
                                         <div className='row'>
                                             <p>{spawn.pokemon.toUpperCase()}</p>
